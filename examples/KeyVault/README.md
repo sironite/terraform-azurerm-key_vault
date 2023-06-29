@@ -1,6 +1,6 @@
-# Terraform module | AzureRM - Invullen
+# Terraform module | AzureRM -  Key Vault
 
-This Terraform module is designed to create a Invullen for Azure.
+This Terraform module is designed to create a  Key Vault for Azure.
 
 ## Pre-requisites
 
@@ -9,10 +9,13 @@ Using the modules requires the following pre-requisites:
 
 ## Usage
 
-`Invullen`
+`key_vault`
 
 ```hcl
-
+module "key_vault" {
+  source  = "sironite/key_vault/azurerm"
+  version = "X.X.X"
+}
 
 ```
 
