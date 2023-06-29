@@ -15,10 +15,11 @@ module "key_vault" {
   location                 = "westeurope"
   sku_name                 = "standard"
   tenant_id                = data.azurerm_client_config.current.tenant_id
-  soft_delete_enabled      = true
-  purge_protection_enabled = true
-  purge_protection_days    = 90
 
+  purge_protection_enabled = var.purge_protection_enabled
+  soft_delete_retention_days = var.soft_delete_retention_days
+  public_network_access_enabled = var.public_network_access_enabled
+  
   access_policies = {
     "access-policy-1" = {
       tenant_id               = data.azurerm_client_config.current.tenant_id

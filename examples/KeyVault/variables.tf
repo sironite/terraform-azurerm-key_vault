@@ -24,19 +24,19 @@ variable "tenant_id" {
   description = "The tenant ID of the Azure Active Directory."
 }
 
-variable "purge_protection_enabled" {
+variable "public_network_access_enabled" {
   type        = bool
-  description = "Specifies whether protection against purge is enabled for this key vault."
+  description = "Whether or not public network access is enabled."
   default     = false
 }
-  
-variable "soft_delete_retention_days" {
-  type        = number
-  description = "Specifies the soft delete data retention days. It accepts values between 7 and 90."
-  default     = 30  
+
+variable "soft_delete_enabled" {
+  type        = bool
+  description = "Whether or not soft delete is enabled."
+  default     = true
 }
 
-variable "public_network_access_enabled" {
+variable "purge_protection_enabled" {
   type        = bool
   description = "Whether public network access is allowed for this Key Vault"
   default     = true
@@ -52,6 +52,7 @@ variable "access_policies" {
   }))
   description = "The access policies for the key vault."
   default = []
+
 }
 
 variable "network_acls" {
@@ -63,7 +64,6 @@ variable "network_acls" {
   }))
   description = "The network ACLs for the key vault."
   default = []
-
 }
 
 variable "contacts" {

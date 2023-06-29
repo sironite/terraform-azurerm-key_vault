@@ -2,7 +2,7 @@ module "key_vault" {
   source  = "sironite/key_vault/azurerm"
   version = "X.X.X"
 
-  key_vault_name           = "key-vault"
+  name                     = "key-vault"
   resource_group_name      = "resource-group"
   location                 = "westeurope"
   sku_name                 = "standard"
