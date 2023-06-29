@@ -10,15 +10,16 @@ module "key_vault" {
   source  = "sironite/key_vault/azurerm"
   version = "X.X.X"
 
-  name                     = "key-vault"
+  key_vault_name           = "key-vault"
   resource_group_name      = "resource-group"
   location                 = "westeurope"
   sku_name                 = "standard"
   tenant_id                = data.azurerm_client_config.current.tenant_id
-  soft_delete_enabled      = true
-  purge_protection_enabled = true
-  purge_protection_days    = 90
 
+  purge_protection_enabled = var.purge_protection_enabled
+  soft_delete_retention_days = var.soft_delete_retention_days
+  public_network_access_enabled = var.public_network_access_enabled
+  
   access_policies = {
     "access-policy-1" = {
       tenant_id               = data.azurerm_client_config.current.tenant_id
@@ -68,17 +69,18 @@ No modules.
 
 | Name | Description | Type | Required |
 |------|-------------|------|:--------:|
-| access\_policies | The access policies for the key vault. | <pre>list(object({<br>    tenant_id               = string<br>    object_id               = string<br>    key_permissions         = list(string)<br>    secret_permissions      = list(string)<br>    certificate_permissions = list(string)<br>  }))</pre> | yes |
-| contacts | The contacts for the key vault. | <pre>list(object({<br>    name  = string<br>    email = string<br>    phone = string<br>  }))</pre> | yes |
 | key\_vault\_name | The name of the key vault. | `string` | yes |
 | location | The location of the key vault. | `string` | yes |
-| network\_acls | The network ACLs for the key vault. | <pre>list(object({<br>    default_action             = string<br>    bypass                     = string<br>    ip_rules                   = list(string)<br>    virtual_network_subnet_ids = list(string)<br>  }))</pre> | yes |
 | resource\_group\_name | The name of the resource group. | `string` | yes |
 | tenant\_id | The tenant ID of the Azure Active Directory. | `string` | yes |
-| public\_network\_access\_enabled | Whether or not public network access is enabled. | `bool` | no |
-| purge\_protection\_enabled | Whether or not purge protection is enabled. | `bool` | no |
+| access\_policies | The access policies for the key vault. | <pre>list(object({<br>    tenant_id               = string<br>    object_id               = string<br>    key_permissions         = list(string)<br>    secret_permissions      = list(string)<br>    certificate_permissions = list(string)<br>  }))</pre> | no |
+| contacts | The contacts for the key vault. | <pre>list(object({<br>    name  = string<br>    email = string<br>    phone = string<br>  }))</pre> | no |
+| network\_acls | The network ACLs for the key vault. | <pre>list(object({<br>    default_action             = string<br>    bypass                     = string<br>    ip_rules                   = list(string)<br>    virtual_network_subnet_ids = list(string)<br>  }))</pre> | no |
+| public\_network\_access\_enabled | Whether public network access is allowed for this Key Vault | `bool` | no |
+| purge\_protection\_enabled | Specifies whether protection against purge is enabled for this key vault. | `bool` | no |
 | sku\_name | The SKU name of the key vault. | `string` | no |
-| soft\_delete\_enabled | Whether or not soft delete is enabled. | `bool` | no |
+| soft\_delete\_retention\_days | Specifies the soft delete data retention days. It accepts values between 7 and 90. | `number` | no |
+| tags | The tags for the key vault. | `map(string)` | no |
 
 ## Outputs
 
