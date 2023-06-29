@@ -38,7 +38,7 @@ variable "soft_delete_enabled" {
 
 variable "purge_protection_enabled" {
   type        = bool
-  description = "Whether or not purge protection is enabled."
+  description = "Whether public network access is allowed for this Key Vault"
   default     = true
 }
 
@@ -51,6 +51,8 @@ variable "access_policies" {
     certificate_permissions = list(string)
   }))
   description = "The access policies for the key vault."
+  default = []
+
 }
 
 variable "network_acls" {
@@ -61,6 +63,7 @@ variable "network_acls" {
     virtual_network_subnet_ids = list(string)
   }))
   description = "The network ACLs for the key vault."
+  default = []
 }
 
 variable "contacts" {
@@ -70,4 +73,11 @@ variable "contacts" {
     phone = string
   }))
   description = "The contacts for the key vault."
+  default = []
+}
+
+variable "tags" {
+  type = map(string)
+  description = "The tags for the key vault."
+  default = {}
 }
