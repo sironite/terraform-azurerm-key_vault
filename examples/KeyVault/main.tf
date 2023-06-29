@@ -35,9 +35,6 @@ module "key_vault" {
       bypass                     = "AzureServices"
       ip_rules                   = [""]
       virtual_network_subnet_ids = module.network.subnet_ids
-  } }
-
-
-
-
+    }
+  }
 }
