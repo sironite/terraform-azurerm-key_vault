@@ -16,7 +16,7 @@ variable "resource_group_name" {
 variable "sku_name" {
   type        = string
   description = "The SKU name of the key vault."
-  default = "standard"
+  default     = "standard"
 }
 
 variable "tenant_id" {
@@ -27,23 +27,23 @@ variable "tenant_id" {
 variable "public_network_access_enabled" {
   type        = bool
   description = "Whether or not public network access is enabled."
-  default = false
+  default     = false
 }
 
 variable "soft_delete_enabled" {
   type        = bool
   description = "Whether or not soft delete is enabled."
-  default = true
+  default     = true
 }
 
 variable "purge_protection_enabled" {
   type        = bool
   description = "Whether or not purge protection is enabled."
-  default = true
+  default     = true
 }
 
 variable "access_policies" {
-  type        = list(object({
+  type = list(object({
     tenant_id               = string
     object_id               = string
     key_permissions         = list(string)
@@ -54,7 +54,7 @@ variable "access_policies" {
 }
 
 variable "network_acls" {
-  type        = list(object({
+  type = list(object({
     default_action             = string
     bypass                     = string
     ip_rules                   = list(string)
@@ -64,7 +64,7 @@ variable "network_acls" {
 }
 
 variable "contacts" {
-  type        = list(object({
+  type = list(object({
     name  = string
     email = string
     phone = string
