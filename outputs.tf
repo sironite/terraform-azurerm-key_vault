@@ -3,6 +3,10 @@ output "key_vault_id" {
   description = "The ID of the Azure Key Vault resource."
   value       = azurerm_key_vault.this.id
 }
+output "key_vault_name" {
+  description = "The ID of the Azure Key Vault resource."
+  value       = azurerm_key_vault.this.name
+}
 
 # Output for the URI of the Azure Key Vault resource
 output "key_vault_uri" {
