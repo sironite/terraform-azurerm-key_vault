@@ -24,6 +24,30 @@ variable "tenant_id" {
   description = "The tenant ID of the Azure Active Directory."
 }
 
+variable "enable_rbac_authorization" {
+  type        = bool
+  description = "Specifies whether Azure RBAC authorization should be used for this key vault."
+  default     = false
+}
+
+variable "enabled_for_deployment" {
+  type        = bool
+  description = "Specifies whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault."
+  default     = false
+}
+
+variable "enabled_for_template_deployment" {  
+  type        = bool
+  description = "Specifies whether Azure Resource Manager is permitted to retrieve secrets from the key vault."
+  default     = false
+}
+
+variable "enabled_for_disk_encryption" {
+  type        = bool
+  description = "Specifies whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys."
+  default     = false
+}
+
 variable "purge_protection_enabled" {
   type        = bool
   description = "Specifies whether protection against purge is enabled for this key vault."
