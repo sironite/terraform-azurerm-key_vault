@@ -75,6 +75,10 @@ No modules.
 | tenant\_id | The tenant ID of the Azure Active Directory. | `string` | yes |
 | access\_policies | The access policies for the key vault. | <pre>list(object({<br>    tenant_id               = string<br>    object_id               = string<br>    key_permissions         = list(string)<br>    secret_permissions      = list(string)<br>    certificate_permissions = list(string)<br>  }))</pre> | no |
 | contacts | The contacts for the key vault. | <pre>list(object({<br>    name  = string<br>    email = string<br>    phone = string<br>  }))</pre> | no |
+| enable\_rbac\_authorization | Specifies whether Azure RBAC authorization should be used for this key vault. | `bool` | no |
+| enabled\_for\_deployment | Specifies whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault. | `bool` | no |
+| enabled\_for\_disk\_encryption | Specifies whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. | `bool` | no |
+| enabled\_for\_template\_deployment | Specifies whether Azure Resource Manager is permitted to retrieve secrets from the key vault. | `bool` | no |
 | network\_acls | The network ACLs for the key vault. | <pre>list(object({<br>    default_action             = string<br>    bypass                     = string<br>    ip_rules                   = list(string)<br>    virtual_network_subnet_ids = list(string)<br>  }))</pre> | no |
 | public\_network\_access\_enabled | Whether public network access is allowed for this Key Vault | `bool` | no |
 | purge\_protection\_enabled | Specifies whether protection against purge is enabled for this key vault. | `bool` | no |
