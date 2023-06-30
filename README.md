@@ -89,6 +89,7 @@ No modules.
 | key\_vault\_access\_policies | The access policies of the Azure Key Vault resource. |
 | key\_vault\_contacts | The contacts of the Azure Key Vault resource. |
 | key\_vault\_id | The ID of the Azure Key Vault resource. |
+| key\_vault\_name | The ID of the Azure Key Vault resource. |
 | key\_vault\_network\_acls | The network ACLs of the Azure Key Vault resource. |
 | key\_vault\_uri | The URI of the Azure Key Vault resource. |
 
